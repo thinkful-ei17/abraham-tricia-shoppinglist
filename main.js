@@ -24,13 +24,15 @@ const STORE = [
  */
 
 function generateItemHtml(index) {
-  return `<li><span class= 'shopping-item' data-item-index="${index}">${STORE[index].name}</span>
+  return `<li>
+        <span class= 'shopping-item' data-item-index="${index}">${STORE[index].name}</span>
         <div class= 'shopping-item-controls'>
-        <button class= 'shopping-item-toggle'>
-        <span class= 'button-label'>check</span>
-        </button><button class= 'shopping-item-delete'>
-        <span class= 'button-label'>delete</span>
-        </button>
+          <button class= 'shopping-item-toggle'>
+            <span class= 'button-label'>check</span>
+            </button>
+          <button class= 'shopping-item-delete'>
+            <span class= 'button-label'>delete</span>
+           </button>
         </div >
         </li>`;
 }
@@ -73,7 +75,23 @@ function handleItemCheckClicked() {
 function handleDeleteItemClicked() {
   // this function will be responsible for when users want to delete a shopping list
   // item
-  console.log('`handleDeleteItemClicked` ran');
+  
+  // 1. Event Target to get deleted item
+  // 2. Remove from STORE
+  // 3. Reomve from DOM
+
+  let item = $('.js-shopping-list').on('click', '.shopping-item-delete', function(event){
+    let currentItem = event.currentTarget;
+    let itemIndex = $(currentItem).closest('li').find('span').attr('data-item-index');
+    $(currentItem).closest('li').remove();
+    delete STORE[itemIndex];
+  });
+
+
+
+  
+
+    console.log('`handleDeleteItemClicked` ran');
 }
 
 // this function will be our callback when the page loads. it's responsible for
