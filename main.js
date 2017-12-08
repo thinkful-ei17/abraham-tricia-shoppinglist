@@ -16,10 +16,31 @@ const STORE = [
   {name: "bread", checked: false}
 ];
 
+/*
+  function addShoppingListItem(index, name, checked){
+  // Do things here
+  }
+
+ */
+
+function generateItemHtml(index){
+ return `<li><span class= 'shopping-item' data-item-index="${index}">${STORE[index].name}</span>
+        <div class= 'shopping-item-controls'>
+        <button class= 'shopping-item-toggle'>
+        <span class= 'button-label'>check</span>
+        </button><button class= 'shopping-item-delete'>
+        <span class= 'button-label'>delete</span>
+        </button>
+        </div >
+        </li>`
+}
 
 function renderShoppingList() {
   // this function will be repsonsible for rendering the shopping list in
   // the DOM
+  let list = STORE.map((item, index)  => generateItemHtml(index));
+  // Add to DOM
+  $('.js-shopping-list').append(list);
   console.log('`renderShoppingList` ran');
 }
 
