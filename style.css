@@ -8,6 +8,7 @@ body {
 
 button, input[type="text"] {
   padding: 5px;
+  margin-bottom: 10px;
 }
 
 button:hover {
@@ -44,4 +45,8 @@ button:hover {
 
 .shopping-item__checked {
   text-decoration: line-through;
+}
+
+.shopping-item-found {
+  background-color: yellow;
 }

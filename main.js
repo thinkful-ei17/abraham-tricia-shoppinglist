@@ -109,6 +109,29 @@ function handleDeleteItemClicked() {
   console.log('`handleDeleteItemClicked` ran');
 }
 
+function handleSearchItemClicked(){
+  // How do we clear existing .shopping-item-found
+
+  $('#js-shopping-list-form').on('click','button[type="search"]', event => {
+  $('li.shopping-item-found').removeClass('shopping-item-found');
+    event.preventDefault();
+    let searchedItem = $('.js-shopping-list-search').val();
+    let foundItem = null;
+    
+    STORE.forEach(i => { 
+      if (i.name === searchedItem) foundItem = i;
+    });
+  
+    let itemIndex = STORE.indexOf(foundItem);
+
+    $('.js-shopping-list')
+      .find(`span[data-item-index="${itemIndex}"]`)
+      .parent()
+      .addClass('shopping-item-found');
+
+  });
+}
+
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the shopping list, and activating our individual functions
 // that handle new item submission and user clicks on the "check" and "delete" buttons
@@ -118,7 +141,7 @@ function handleShoppingList() {
   handleNewItemSubmit();
   handleItemCheckClicked();
   handleDeleteItemClicked();
-
+  handleSearchItemClicked();
 }
 
 // when the page loads, call `handleShoppingList`
