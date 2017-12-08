@@ -103,7 +103,6 @@ function handleDeleteItemClicked() {
         delete STORE[itemIndex];
     });
 
-
     console.log('`handleDeleteItemClicked` ran');
 }
 
@@ -137,7 +136,7 @@ handleItemNameChange() {
     //3.  User types new name and EDIT button is replaced with SAVE button
     //4.  User selects SAVE button and span changes item name to new name
 
-    let item = $('.shopping-item').on('click', function(event) {
+    let item = $('.shopping-item').on('click', event => {
         let currentItem = event.currentTarget;
 
         console.log(currentItem);
@@ -146,7 +145,6 @@ handleItemNameChange() {
         // let itemIndex = $(currentItem).closest('li').find('span').attr('data-item-index');
         // $(currentItem).closest('li').append(<h1>item tag here</h1>);      
     });
-
 
 }
 
@@ -163,10 +161,9 @@ handleItemNameChange() {
         $(".buttonControl").append('<button class= "startQuiz">Take the Quiz!</button>');
         $(".next").remove();
         handleNextClick();
-      }
-      
-      
+      } 
     }
+  }
 */
 
 
