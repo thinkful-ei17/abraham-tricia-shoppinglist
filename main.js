@@ -58,6 +58,7 @@ function handleNewItemSubmit() {
     event.preventDefault();
     let item = $('.js-shopping-list-entry').val();
     STORE.push({ name: item, checked: false });
+    $('.js-shopping-list-entry').val('');
     renderShoppingList();
   });
 
@@ -108,7 +109,7 @@ function handleSearchItemClicked(){
   // How do we clear existing .shopping-item-found
 
   $('#js-shopping-list-search').on('submit'/*,'button[type="search"]'*/, event => {
-  $('li.shopping-item-found').removeClass('shopping-item-found');
+    $('li.shopping-item-found').removeClass('shopping-item-found');
     event.preventDefault();
     let searchedItem = $('.js-shopping-list-search').val();
     let foundItem = null;
@@ -119,10 +120,15 @@ function handleSearchItemClicked(){
   
     let itemIndex = STORE.indexOf(foundItem);
 
-    $('.js-shopping-list')
-      .find(`span[data-item-index="${itemIndex}"]`)
-      .parent()
-      .addClass('shopping-item-found');
+    let item = $('.js-shopping-list')
+      .find(`span[data-item-index="${itemIndex}"]`);
+
+    item.parent().addClass('shopping-item-found');
+    let offset = item.offset();
+    item[0].scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
 
   });
 }
