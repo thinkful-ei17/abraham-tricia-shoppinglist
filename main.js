@@ -101,18 +101,13 @@ function handleDeleteItemClicked() {
     $(currentItem).closest('li').remove();
     delete STORE[itemIndex];
   });
-
-
-
-
-
   console.log('`handleDeleteItemClicked` ran');
 }
 
 function handleSearchItemClicked(){
   // How do we clear existing .shopping-item-found
 
-  $('#js-shopping-list-form').on('click','button[type="search"]', event => {
+  $('#js-shopping-list-search').on('submit'/*,'button[type="search"]'*/, event => {
   $('li.shopping-item-found').removeClass('shopping-item-found');
     event.preventDefault();
     let searchedItem = $('.js-shopping-list-search').val();
