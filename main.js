@@ -25,7 +25,7 @@ const STORE = [
 
 function generateItemHtml(index) {
   return `<li>
-        <span class= 'shopping-item' data-item-index="${index}">${STORE[index].name}</span>
+        <span class= 'shopping-item ${STORE[index].checked ? "shopping-item__checked" :"" }' data-item-index="${index}">${STORE[index].name}</span>
         <div class= 'shopping-item-controls'>
           <button class= 'shopping-item-toggle'>
             <span class= 'button-label'>check</span>
